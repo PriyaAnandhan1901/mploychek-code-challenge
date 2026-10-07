@@ -4,7 +4,7 @@
     "userId": "admin",
     "name": "Admin User",
     "email": "admin@demo.com",
-    "passwordHash": "$2b$10$Y3JpyA2seNsnNw7Xlv7qEOEiwxosQkU6xJCrnAsoGSPSPDv5WJKaS",
+    "passwordHash": "$2b$10$Udzz5yIGcqKpAgCjrpBYF.RL.VcH/DizXPNH5R5k5MC0LL46FSpfC",
     "role": "Admin"
   },
   {
@@ -12,7 +12,7 @@
     "userId": "priya",
     "name": "Priya Anandhan",
     "email": "priya@demo.com",
-    "passwordHash": "$2b$10$8WrjotN8GdySFBjfd3Hk2uqIvji2ljeyh9tFk.HsUy7.XdyNX/2GG",
+    "passwordHash": "$2b$10$MUpmrZMmvzwIpojSw8g.luoTobD2IF/bU5eAcDi.tvlDIMv8bthhC",
     "role": "General User"
   }
 ]
