@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "userId": "admin",
+    "name": "Admin User",
+    "email": "admin@demo.com",
+    "passwordHash": "$2b$10$Y3JpyA2seNsnNw7Xlv7qEOEiwxosQkU6xJCrnAsoGSPSPDv5WJKaS",
+    "role": "Admin"
+  },
+  {
+    "id": 2,
+    "userId": "priya",
+    "name": "Priya Anandhan",
+    "email": "priya@demo.com",
+    "passwordHash": "$2b$10$8WrjotN8GdySFBjfd3Hk2uqIvji2ljeyh9tFk.HsUy7.XdyNX/2GG",
+    "role": "General User"
+  }
+]
