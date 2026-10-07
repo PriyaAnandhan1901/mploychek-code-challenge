@@ -1,1 +1,43 @@
-<p>login works!</p>
+<div class="login-wrap">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <h1>Welcome back</h1>
+    <p class="sub">Sign in to continue</p>
+
+    <label>User ID
+      <input formControlName="userId" autocomplete="username" />
+    </label>
+    @if (form.controls.userId.touched && form.controls.userId.invalid) {
+      <small class="err">User ID is required (min 3 characters).</small>
+    }
+
+    <label>Password
+      <input type="password" formControlName="password" autocomplete="current-password" />
+    </label>
+    @if (form.controls.password.touched && form.controls.password.invalid) {
+      <small class="err">Password is required (min 6 characters).</small>
+    }
+
+    <label>Role
+      <select formControlName="role">
+        @for (r of roles; track r) {
+          <option [value]="r">{{ r }}</option>
+        }
+      </select>
+    </label>
+
+    <label class="check">
+      <input type="checkbox" formControlName="simulateDelay" />
+      Simulate slow API (2.5s delay)
+    </label>
+
+    @if (error()) {
+      <div class="error-box">{{ error() }}</div>
+    }
+
+    <button type="submit" [disabled]="loading()">
+      @if (loading()) { <span class="spinner"></span> Signing in... } @else { Sign in }
+    </button>
+
+    <p class="hint">Demo: admin / Admin@123 (Admin) &nbsp;|&nbsp; priya / User@123 (General User)</p>
+  </form>
+</div>
