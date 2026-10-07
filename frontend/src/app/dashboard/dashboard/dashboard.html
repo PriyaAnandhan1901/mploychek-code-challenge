@@ -1,1 +1,64 @@
-<p>dashboard works!</p>
+<header class="topbar">
+  <h2>MPloyChek Portal</h2>
+  <div class="actions">
+    @if (auth.isAdmin()) {
+      <a routerLink="/admin" class="btn light">Manage users</a>
+    }
+    <button class="btn" (click)="auth.logout()">Logout</button>
+  </div>
+</header>
+
+<main class="content">
+  @if (error()) {
+    <div class="error-box">{{ error() }}</div>
+  }
+
+  <section class="panel">
+    <h3>My details</h3>
+    @if (loadingProfile()) {
+      <div class="loading"><span class="spinner"></span> Loading profile...</div>
+    } @else if (profile(); as p) {
+      <dl>
+        <dt>Name</dt><dd>{{ p.name }}</dd>
+        <dt>User ID</dt><dd>{{ p.userId }}</dd>
+        <dt>Email</dt><dd>{{ p.email }}</dd>
+        <dt>Role</dt><dd><span class="badge role">{{ p.role }}</span></dd>
+      </dl>
+    }
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h3>Records <small>(based on your access level)</small></h3>
+      <label>Simulate API delay
+        <select (change)="onDelayChange($any($event.target).value)">
+          @for (d of delayOptions; track d) {
+            <option [value]="d">{{ d === 0 ? 'None' : d + ' ms' }}</option>
+          }
+        </select>
+      </label>
+    </div>
+
+    @if (loadingRecords()) {
+      <div class="loading"><span class="spinner"></span> Loading records...</div>
+    } @else {
+      <table>
+        <thead>
+          <tr><th>#</th><th>Title</th><th>Owner</th><th>Access level</th></tr>
+        </thead>
+        <tbody>
+          @for (r of records(); track r.id) {
+            <tr>
+              <td>{{ r.id }}</td>
+              <td>{{ r.title }}</td>
+              <td>{{ r.owner }}</td>
+              <td><span class="badge" [class]="r.accessLevel.toLowerCase()">{{ r.accessLevel }}</span></td>
+            </tr>
+          } @empty {
+            <tr><td colspan="4">No records available.</td></tr>
+          }
+        </tbody>
+      </table>
+    }
+  </section>
+</main>
